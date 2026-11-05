@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Dashboard | Blood Bank{% endblock %}
+{% block content %}
+<h1>Dashboard</h1>
+<p>Overview of demo donor records, inventory and requests.</p>
+<div class="grid">
+  <div class="card"><h2>{{ donor_count }}</h2><p>Registered donors</p></div>
+  <div class="card"><h2>{{ stock_count }}</h2><p>Total recorded units</p></div>
+  <div class="card"><h2>{{ request_count }}</h2><p>Blood requests</p></div>
+</div>
+<div class="card">
+  <h2>Quick actions</h2>
+  <p><a class="btn" href="{% url 'donor_add' %}">Register donor</a>
+  <a class="btn" href="{% url 'stock_add' %}">Update inventory</a>
+  <a class="btn" href="{% url 'request_add' %}">Create request</a></p>
+</div>
+<div class="card"><h2>Recent requests</h2>
+{% if recent_requests %}<table><tr><th>Hospital</th><th>Group</th><th>Units</th><th>Status</th></tr>
+{% for r in recent_requests %}<tr><td>{{ r.hospital_name }}</td><td>{{ r.blood_group }}</td><td>{{ r.units_required }}</td><td>{{ r.get_status_display }}</td></tr>{% endfor %}</table>
+{% else %}<p>No requests yet.</p>{% endif %}
+</div>
+{% endblock %}

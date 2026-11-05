@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Emergency Requests</h1><p><a class="btn" href="{% url 'request_add' %}">Create request</a></p>
+<div class="card"><table><tr><th>Hospital</th><th>Blood group</th><th>Units</th><th>Status</th><th>Date</th></tr>
+{% for r in requests %}<tr><td>{{ r.hospital_name }}</td><td>{{ r.blood_group }}</td><td>{{ r.units_required }}</td><td>{{ r.get_status_display }}</td><td>{{ r.created_at|date:"d M Y H:i" }}</td></tr>
+{% empty %}<tr><td colspan="5">No requests found.</td></tr>{% endfor %}
+</table></div>
+{% endblock %}

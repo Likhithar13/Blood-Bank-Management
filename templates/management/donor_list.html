@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Donors</h1><p><a class="btn" href="{% url 'donor_add' %}">Add donor</a></p>
+<div class="card">
+<table><tr><th>Name</th><th>Age</th><th>Blood group</th><th>City</th></tr>
+{% for d in donors %}<tr><td>{{ d.name }}</td><td>{{ d.age }}</td><td>{{ d.blood_group }}</td><td>{{ d.city }}</td></tr>
+{% empty %}<tr><td colspan="4">No donor records found.</td></tr>{% endfor %}
+</table></div>
+{% endblock %}

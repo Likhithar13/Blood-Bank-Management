@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Blood Inventory</h1><p><a class="btn" href="{% url 'stock_add' %}">Add / update stock</a></p>
+<div class="card"><table><tr><th>Blood group</th><th>Recorded units</th><th>Last updated</th></tr>
+{% for s in stocks %}<tr><td>{{ s.blood_group }}</td><td>{{ s.units }}</td><td>{{ s.updated_at }}</td></tr>
+{% empty %}<tr><td colspan="3">No inventory records. Add demo stock to begin.</td></tr>{% endfor %}
+</table></div>
+{% endblock %}
