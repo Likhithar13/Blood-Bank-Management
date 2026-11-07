@@ -1,4 +1,4 @@
-```python
+
 from pathlib import Path
 import os
 import dj_database_url
@@ -119,4 +119,3 @@ STORAGES = {
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-```
