@@ -3,6 +3,11 @@ pipeline {
     stages {
         stage('Install dependencies') {
             steps {
+                bat '''
+                whoami
+                echo %PATH%
+                where python
+                '''
                 bat 'python -m pip install --upgrade pip'
                 bat 'pip install -r requirements.txt'
             }
